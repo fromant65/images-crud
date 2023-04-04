@@ -1,0 +1,55 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 14px;
+  /* COLOR PALLETE OF THE APP */
+  --color-base: #75F5B8;
+  --color-sec-dark: #2FA86E;
+  --color-sec-bright: #94FFCB;
+  --color-comp-dark: #A83E2F;
+  --color-comp-bright: #F58576;
+  --color-neutral-dark: #409978;
+  --color-neutral-bright: #E0F9E6;
+  --color-neutral-dark-comp: #8F4C4B;
+  --color-neutral-bright-comp: #FBE1E0;
+}
+
+/* STYLES FOR GENERIC CLASSES */
+
+.button {
+  padding: 0.75em;
+  margin: 0.5em;
+  font-weight: bold;
+  color: var(--color-neutral-bright);
+  background-color: var(--color-sec-dark);
+  border: none;
+  border-radius: 1em;
+  transition: 0.5s ease;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: var(--color-neutral-bright-comp);
+  background-color: var(--color-comp-dark)
+}
+
+.input {
+  display: block;
+  margin: 0.5em;
+  padding: 1em;
+  border: none;
+  color: var(--color-neutral-dark);
+  box-shadow: 0.1em 0.1em 0.4em var(--color-neutral-dark);
+}
+
+.input:focus {
+  box-shadow: 0.1em 0.1em 0.4em var(--color-neutral-dark-comp);
+  outline: none;
+}
+
+.error-message {
+  font-size: 1em;
+  color: var(--color-comp-dark);
+  font-weight: bold;
+}
