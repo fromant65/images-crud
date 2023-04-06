@@ -1,0 +1,10 @@
+.app-container {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+@media screen and (width<768px) {
+    .app-container {
+        display: block;
+    }
+}

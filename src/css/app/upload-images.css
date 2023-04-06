@@ -1,0 +1,58 @@
+.upload-img-form {
+    border-right: 1px solid #ddd;
+}
+
+.upload-img-form label {
+    display: block;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: fit-content;
+    opacity: 0;
+    cursor: pointer;
+    outline: 1px solid black;
+}
+
+.archivo {
+    background-color: var(--color-neutral-bright);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: fit-content;
+    font-weight: lighter;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 3rem;
+}
+
+#file-input:hover+.archivo {
+    background-color: var(--color-sec-bright);
+}
+
+.upload-img-form button {
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--color-neutral-bright);
+}
+
+.upload-img-form button:hover {
+    background-color: var(--color-sec-bright);
+}
+
+@media screen and (width < 768px) {
+    .upload-img-form {
+        border: none
+    }
+}
