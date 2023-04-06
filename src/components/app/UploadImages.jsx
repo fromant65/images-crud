@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { db, auth, storage } from "../../../config/firebase";
 import { ref, uploadBytes } from "firebase/storage";
-import { collection, addDoc, doc } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import "../../css/app/upload-images.css";
+import { ImagesContext } from "./Gallery";
+import { UserContext } from "../../App";
+
 const UploadImages = () => {
   const [imgName, setImgName] = useState("");
   const [image, setImage] = useState(null);
-
+  const { setImages } = useContext(ImagesContext);
+  const { currentUser } = useContext(UserContext);
   const moviesCollectionRef = collection(db, "images");
 
   function handleChoseImg(e) {
@@ -40,7 +44,19 @@ const UploadImages = () => {
     try {
       await submitImageToDB(newFileName);
       await uploadBytes(filesFolderRef, image);
-      console.log("image uploaded");
+      getImages();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function getImages() {
+    const imgCollectionRef = collection(db, "images");
+    const newQuery = query(imgCollectionRef, where("user", "==", currentUser));
+    try {
+      const docs = await getDocs(newQuery);
+      const data = docs.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setImages(data);
     } catch (err) {
       console.error(err);
     }
