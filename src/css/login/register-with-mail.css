@@ -1,5 +1,11 @@
 /* STYLES FOR components/login/RegisterWithEmail.jsx */
 
+.register-form {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
 .register-button {
     display: inline-block;
 }

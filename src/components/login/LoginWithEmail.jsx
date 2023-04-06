@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 import { UserContext } from "../../App";
+import "../../css/login/login-with-mail.css";
+
 const LoginWithMail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ const LoginWithMail = () => {
     }
   }
   return (
-    <div>
+    <div className="login-form">
       <input
         className="input"
         type="email"

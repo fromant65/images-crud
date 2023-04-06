@@ -1,13 +1,15 @@
 /* STYLES FOR components/login/Login.jsx */
 
+.sign-up-component-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
 .login-p {
     color: var(--color-neutral-dark);
     font-size: 1.5em;
     font-weight: bolder;
     user-select: none;
     transition: 0.5s ease;
-}
-
-.login-p:hover {
-    color: var(--color-neutral-dark-comp)
 }

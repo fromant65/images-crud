@@ -3,6 +3,7 @@ import React from "react";
 import Login from "./components/login/login";
 import Logout from "./components/Logout";
 import { auth } from "../config/firebase";
+import "./app.css";
 
 export const UserContext = React.createContext();
 
@@ -17,8 +18,16 @@ function App() {
     <div className="App">
       <p>Current user: {currentUser}</p>
       <UserContext.Provider value={{ setCurrentUser }}>
-        <Login />
-        <Logout />
+        {currentUser === "" ? (
+          <div className="sign-up-container">
+            <Login />
+          </div>
+        ) : (
+          <div className="signed-up-container">
+            Signed Up!
+            <Logout />
+          </div>
+        )}
       </UserContext.Provider>
     </div>
   );

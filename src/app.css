@@ -1,0 +1,7 @@
+/*STYLES FOR App.jsx*/
+
+.sign-up-container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
