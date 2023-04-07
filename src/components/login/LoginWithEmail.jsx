@@ -15,7 +15,6 @@ const LoginWithMail = () => {
       await signInWithEmailAndPassword(auth, email, password);
       setErrorMessage("");
       setCurrentUser(email);
-      console.log("Logged in Successfully");
     } catch (err) {
       setErrorMessage(err.message);
       console.error(err);

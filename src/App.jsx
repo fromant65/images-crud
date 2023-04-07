@@ -11,12 +11,8 @@ export const UserContext = React.createContext();
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
-    auth?.currentUser?.email || ""
+    auth?.currentUser?.email || null
   );
-
-  useEffect(() => {
-    setCurrentUser(auth?.currentUser?.email || "");
-  });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -28,7 +24,9 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
-        {currentUser === "" ? (
+        {currentUser === null ? (
+          ""
+        ) : currentUser === "" ? (
           <div className="sign-up-container">
             <Login />
           </div>

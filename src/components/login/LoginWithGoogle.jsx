@@ -9,7 +9,6 @@ const LoginWithGoogle = () => {
     try {
       await signInWithPopup(auth, googleProvider);
       setCurrentUser(auth.currentUser.email);
-      console.log("Logged in successfully");
     } catch (err) {
       console.error(err);
     }
@@ -17,7 +16,7 @@ const LoginWithGoogle = () => {
   return (
     <div>
       <button className="button" onClick={handleGoogleLogin}>
-        Login with Google
+        Sign up with Google
       </button>
     </div>
   );

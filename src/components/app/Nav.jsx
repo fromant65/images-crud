@@ -7,7 +7,7 @@ const Nav = () => {
   const { currentUser } = useContext(UserContext);
   return (
     <nav className="nav">
-      <p>{currentUser}</p>
+      <p className="current-user">{currentUser}</p>
       <Logout />
     </nav>
   );

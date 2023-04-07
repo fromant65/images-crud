@@ -17,7 +17,6 @@ const RegisterWithMail = () => {
   async function registerUser() {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log("User created successfully");
     } catch (err) {
       setErrorMessage(err.message);
       console.error(err);
@@ -57,7 +56,7 @@ const RegisterWithMail = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <button className="button register-button" onClick={handleEmailRegister}>
-        Register
+        Sign up
       </button>
       <div className="register-button">
         <LoginWithGoogle />

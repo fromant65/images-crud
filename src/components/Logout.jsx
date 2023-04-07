@@ -9,7 +9,6 @@ const Logout = () => {
     try {
       await signOut(auth);
       setCurrentUser("");
-      console.log("Logged out successfully");
     } catch (err) {
       console.error(err);
     }

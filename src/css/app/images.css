@@ -15,6 +15,7 @@
     margin: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
 .gallery-item-container {
@@ -30,6 +31,8 @@ img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
 }
 
 .delete-img {
@@ -48,4 +51,19 @@ img {
 
 .delete-img:hover {
     background-color: rgba(200, 200, 200, 0.5);
+}
+
+.delete-img:hover .trash-icon {
+    opacity: 1;
+}
+
+.trash-icon {
+    color: var(--color-sec-dark);
+    opacity: 0.5
+}
+
+.image-name {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-sec-dark);
 }

@@ -11,7 +11,7 @@ const UploadImages = () => {
   const [image, setImage] = useState(null);
   const { setImages } = useContext(ImagesContext);
   const { currentUser } = useContext(UserContext);
-  const moviesCollectionRef = collection(db, "images");
+  const imagesRef = collection(db, "images");
 
   function handleChoseImg(e) {
     const file = e.target.files[0];
@@ -26,19 +26,20 @@ const UploadImages = () => {
   async function submitImageToDB(newFileName) {
     const nameParts = newFileName.split("|");
     try {
-      await addDoc(moviesCollectionRef, {
+      await addDoc(imagesRef, {
         name: nameParts[0],
         user: nameParts[1],
         date: nameParts[2],
       });
       setImgName("");
+      setImage(null);
     } catch (err) {
       console.error(err);
     }
   }
 
   async function handleUploadImage() {
-    if (!image) return;
+    if (!image || !imgName) return;
     const newFileName = generateFileName(imgName);
     const filesFolderRef = ref(storage, `images/${newFileName}`);
     try {
@@ -74,10 +75,14 @@ const UploadImages = () => {
       <div className="input-wrapper">
         <input type="file" id="file-input" onChange={handleChoseImg} />
         <label htmlFor="file-input" className="archivo">
-          <b>Browsed image:</b> {image && image.name}
+          {image?.name ? image.name : <b>Browse image...</b>}
         </label>
       </div>
-      <button type="submit" onClick={handleUploadImage}>
+      <button
+        type="submit"
+        onClick={handleUploadImage}
+        className="submit-image"
+      >
         Upload image
       </button>
     </div>

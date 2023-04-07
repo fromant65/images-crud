@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import DisplayImg from "./DisplayImg";
 import DeleteImg from "./DeleteImg";
 import "../../css/app/images.css";
@@ -26,7 +26,7 @@ const Images = () => {
                 imgId={id}
               />
             </div>
-            <p>{name}</p>
+            <p className="image-name">{name}</p>
           </div>
         );
       })}

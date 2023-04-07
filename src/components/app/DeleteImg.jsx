@@ -3,7 +3,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { db, storage } from "../../../config/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
-import { ref, deleteObject, getDownloadURL } from "firebase/storage";
+import { ref, deleteObject } from "firebase/storage";
 import { ImagesContext } from "./Gallery";
 
 const DeleteImg = ({ imageName, imgId }) => {
@@ -11,14 +11,16 @@ const DeleteImg = ({ imageName, imgId }) => {
   async function handleDeleteImage() {
     const imageRef = ref(storage, `images/${imageName}`);
     const imageDoc = doc(db, "images", imgId);
+    const confirmation = confirm(
+      "Do you really want to delete this image? This cannot be undone."
+    );
+    if (!confirmation) return;
     try {
       await deleteObject(imageRef);
       await deleteDoc(imageDoc);
       const newImages = images.filter((image) => {
-        console.log(image.id, imgId, image.id === imgId);
         return image.id != imgId;
       });
-      console.log(newImages);
       setImages(newImages);
     } catch (err) {
       console.error(err);
@@ -27,7 +29,7 @@ const DeleteImg = ({ imageName, imgId }) => {
   return (
     <div className="delete-img" onClick={handleDeleteImage}>
       <div className="trash.icon">
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon icon={faTrash} className="trash-icon" />
       </div>
     </div>
   );

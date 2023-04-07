@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import UploadImages from "./UploadImages";
 import Images from "./Images";
 import "../../css/app/gallery.css";
-import { db, storage } from "../../../config/firebase";
-import { collection, getDocs, doc, query, where } from "firebase/firestore";
+import { db } from "../../../config/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { UserContext } from "../../App";
 export const ImagesContext = React.createContext();
 
