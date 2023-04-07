@@ -23,8 +23,7 @@ const Gallery = () => {
   }
 
   useEffect(() => {
-    const images = () => getImages();
-    return images;
+    getImages();
   }, []);
 
   return (

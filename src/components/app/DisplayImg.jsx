@@ -15,8 +15,7 @@ const DisplayImg = ({ imageName }) => {
   }
 
   useEffect(() => {
-    const imageUrl = () => getImageURL();
-    return imageUrl;
+    getImageURL();
   }, [imageName]);
 
   return <img src={imageUrl} alt={imageName} />;
