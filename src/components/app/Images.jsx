@@ -5,8 +5,10 @@ import "../../css/app/images.css";
 import { ImagesContext } from "./Gallery";
 
 const Images = () => {
+  //Getting images context
   const { images, setImages } = useContext(ImagesContext);
 
+  //We map the images, display them and add a delete button for each one
   return (
     <div className="gallery-container">
       {images.map((image) => {

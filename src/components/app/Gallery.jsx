@@ -5,11 +5,16 @@ import "../../css/app/gallery.css";
 import { db } from "../../../config/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { UserContext } from "../../App";
+
+//Creating a context to pass the images to different components
 export const ImagesContext = React.createContext();
 
 const Gallery = () => {
+  //State for the images stored in the gallery. Before retrieving them, it's empty
   const [images, setImages] = useState([]);
   const { currentUser } = useContext(UserContext);
+
+  //Getting images from storage with firebase utilities for a specific user
   async function getImages() {
     const imgCollectionRef = collection(db, "images");
     const newQuery = query(imgCollectionRef, where("user", "==", currentUser));
@@ -22,6 +27,7 @@ const Gallery = () => {
     }
   }
 
+  //We get the images when rendering the page
   useEffect(() => {
     getImages();
   }, []);
