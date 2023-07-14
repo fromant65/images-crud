@@ -7,7 +7,10 @@ import { ref, deleteObject } from "firebase/storage";
 import { ImagesContext } from "./Gallery";
 
 const DeleteImg = ({ imageName, imgId }) => {
+  //When we delete a image, we need to update the state on react so it's no longer mapped
   const { images, setImages } = useContext(ImagesContext);
+
+  //We handle the image deletion with Firebase utilities and filter it from the images state
   async function handleDeleteImage() {
     const imageRef = ref(storage, `images/${imageName}`);
     const imageDoc = doc(db, "images", imgId);
