@@ -1,5 +1,3 @@
-////This component can be divided into smaller components
-
 import React, { useContext, useState } from "react";
 import { db, auth, storage } from "../../../config/firebase";
 import { ref, uploadBytes } from "firebase/storage";
@@ -7,6 +5,8 @@ import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import "../../css/app/upload-images.css";
 import { ImagesContext } from "./Gallery";
 import { UserContext } from "../../App";
+import ImageName from "./uploadImagesComponents/ImageName";
+import FileInput from "./uploadImagesComponents/FileInput";
 
 const UploadImages = () => {
   const [imgName, setImgName] = useState("");
@@ -14,12 +14,6 @@ const UploadImages = () => {
   const { setImages } = useContext(ImagesContext);
   const { currentUser } = useContext(UserContext);
   const imagesRef = collection(db, "images");
-
-  //Handling the file input; we chose the first file selected
-  function handleChoseImg(e) {
-    const file = e.target.files[0];
-    setImage(file);
-  }
 
   //We generate a unique name based on the name of the file, the username and the current date
   function generateFileName(name) {
@@ -73,19 +67,8 @@ const UploadImages = () => {
 
   return (
     <div className="upload-img-form">
-      <input
-        className="input"
-        type="text"
-        value={imgName}
-        onChange={(e) => setImgName(e.target.value)}
-        placeholder="Image name"
-      />
-      <div className="input-wrapper">
-        <input type="file" id="file-input" onChange={handleChoseImg} />
-        <label htmlFor="file-input" className="archivo">
-          {image?.name ? image.name : <b>Browse image...</b>}
-        </label>
-      </div>
+      <ImageName imgName={imgName} setImgName={setImgName} />
+      <FileInput image={image} setImage={setImage} />
       <button
         type="submit"
         onClick={handleUploadImage}
